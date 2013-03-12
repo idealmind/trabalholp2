@@ -1,0 +1,701 @@
+
+
+
+import java.util.ArrayList;
+
+import java.util.List;
+
+import java.util.Scanner;
+
+import java.lang.Math;
+
+
+
+
+
+
+
+class Ponto2D {
+
+
+
+ 
+	public float x;
+
+	 public float y;
+
+	
+ 
+	public Ponto2D(float x, float y) {
+
+		 this.x = x;
+
+		 this.y = y;
+ 
+	}
+
+	
+
+	 public Ponto2D() {
+ 
+		this(0f, 0f);
+
+	 }
+
+	
+ 
+	public double distancia(Ponto2D ponto) {
+
+		 // distancia entre dois pontos
+
+		 return Math.sqrt(Math.pow(2,ponto.x-this.centrox)+ Math.pow(2,ponto.y-this.centroy));
+ 
+	}
+
+
+
+
+	 public float getX() {
+
+		 return x;
+ 
+	}
+
+
+
+
+	 public void setX(float x) {
+
+		 this.x = x;
+ 
+	}
+
+
+
+
+	 public float getY() {
+
+		 return y;
+ 
+	}
+
+
+
+
+	 public void setY(float y) {
+
+		 this.y = y;
+ 
+	}
+
+
+
+
+}
+
+
+
+
+class Vetor2D {
+
+
+
+
+	 private Ponto2D pontoIni;
+ 
+	private Ponto2D pontoFim;
+
+	 private Ponto2D pontoEquivalente;
+
+
+
+
+ 	public Vetor2D(Ponto2D pontoIni, Ponto2D pontoFim) {
+
+		 this.pontoIni = pontoIni;
+
+ 		this.pontoFim = pontoFim;
+
+
+
+
+		 this.pontoEquivalente = new Ponto2D(pontoFim.getX() - pontoIni.getX(),
+ 
+				pontoFim.getY() - pontoIni.getY());
+
+	 }
+
+
+
+
+	 public Vetor2D(Ponto2D pontoEquivalente) {
+ 
+		this.pontoIni = new Ponto2D();
+
+		 this.pontoFim = pontoEquivalente;
+
+		 this.pontoEquivalente = pontoEquivalente;
+ 
+	}
+
+
+
+
+	 public double produtoVetorial(Vetor2D vetor) {
+
+		 // produto vetorial calculado em cima do objeto pontoEquivalente, da
+ 
+		// classe Ponto2D de cada objeto do tipo Vetor2D envolvido
+
+		 return 0d;
+
+	 }
+ 
+
+
+
+	public double produtoEscalar(Vetor2D vetor) {
+
+		 // produto vetorial calculado em cima do objeto pontoEquivalente, da
+ 
+		// classe Ponto2D de cada objeto do tipo Vetor2D envolvido
+
+		 return 0d;
+
+	 }
+ 
+
+
+
+	public Ponto2D getPontoIni() {
+
+		 return pontoIni;
+
+	 }
+ 
+
+
+
+	public void setPontoIni(Ponto2D pontoIni) {
+
+		 this.pontoIni = pontoIni;
+ 
+	}
+
+
+
+
+	 public Ponto2D getPontoFim() {
+
+		 return pontoFim;
+ 
+	}
+
+
+
+
+	 public void setPontoFim(Ponto2D pontoFim) {
+
+		 this.pontoFim = pontoFim;
+ 
+	}
+
+
+
+
+	 public Ponto2D getPontoEquivalente() {
+
+		 return pontoEquivalente;
+ 
+	}
+
+
+
+
+	 public void setPontoEquivalente(Ponto2D pontoEquivalente) {
+
+ 		this.pontoEquivalente = pontoEquivalente;
+
+	 }
+
+}
+
+
+
+
+class LeitorDeFormas {
+ 
+
+
+
+	public Scanner leitor;
+
+	
+
+	 public LeitorDeFormas(Scanner leitor) {
+ 
+		this.leitor = leitor;
+
+	 }
+
+
+
+
+	 public Circulo leCirculo() {
+ 
+		
+
+		int raio = leitor.nextInt();
+
+		 Ponto2D centro = lePonto();
+ 
+		
+
+		return  new Circulo(raio,centro);
+
+	 }
+ 
+	
+
+	public Retangulo leRetangulo() {
+
+		
+ 
+		Ponto2D pontoInfEsq = lePonto();
+
+		 Ponto2D pontoInfDir = lePonto();
+
+		 Ponto2D pontoSupEsq = lePonto();
+ 
+		Ponto2D pontoSupDir = lePonto();
+
+		
+
+		 return new Retangulo(pontoInfEsq, pontoInfDir, pontoSupEsq, pontoSupDir);
+ 
+	}
+
+	
+
+	 public Triangulo leTriangulo() {
+ 
+		
+
+		Ponto2D verticeA = lePonto();
+
+		 Ponto2D verticeB = lePonto();
+ 
+		Ponto2D verticeC = lePonto();
+
+			
+
+		 return new Triangulo(verticeA, verticeB, verticeC);
+ 
+	}
+
+	
+
+	 public Ponto2D lePonto() {
+ 
+		
+
+		int x = leitor.nextInt();
+
+		 int y = leitor.nextInt();
+ 
+		
+
+		return new Ponto2D(x, y);
+
+	 }
+ 
+}
+
+
+
+
+
+
+
+interface Forma {
+
+	
+
+	 double calculaArea();
+ 
+	 double comprimentoLinha();
+
+	 boolean contem(Ponto2D ponto);
+
+}
+
+
+ 
+
+
+
+
+class Circulo implements Forma {
+
+        double raio, centrox, centroy;
+
+        
+
+        Circulo(double raio, Ponto2D centro){
+
+            this.raio=raio;
+ 
+            this.centrox=centro.x;
+
+            this.centroy=centro.y;
+
+        }
+
+        
+
+        public double calculaArea(){
+
+            return Math.PI*this.raio*this.raio;
+ 
+        }
+
+        
+
+        public double comprimentoLinha(){
+
+            return Math.PI*2*this.raio;
+
+        }
+
+        
+
+        public boolean contem(Ponto2D ponto){
+ 
+            double distancia;
+
+            distancia=distancia(ponto);
+
+            if (distancia<this.raio){
+
+                return true;
+ 
+            }
+
+            else
+
+                return false;
+
+        }
+
+        
+
+        public String ToString(double area, double linha){
+
+                return "Circulo: Raio "+this.raio+", centro ("+this.centrox+","+this.centroy+"), Area: "+area+", Linha: "+linha+"";
+ 
+        }
+
+        
+
+}
+
+
+
+
+class Retangulo implements Forma {
+
+        double xIE,yIE, xID, yID, xSE,ySE, xSD,ySD;
+
+        
+
+        Retangulo(Ponto2D A, Ponto2D B, Ponto2D C, Ponto2D D ){
+ 
+            this.xIE=A.x;
+
+            this.yIE=A.y;
+
+            this.xID=B.x;
+
+            this.yID=B.y;
+
+            this.xSD=C.x;
+
+            this.ySD=C.y;
+
+             this.xSE=D.x;
+
+            this.ySE=D.y;
+
+        }
+
+        
+
+        public double calculaArea(){
+
+            return (this.xID-this.xIE)*(this.ySE-this.yIE);
+ 
+        }
+
+        
+
+        public double comprimentoLinha(){
+
+            return (2*((this.xID-this.xIE)+(this.ySE-this.yIE)));
+
+        }
+
+        
+
+        public boolean contem(Ponto2D ponto){
+ 
+            
+
+            if ((ponto.x>this.xIE)&&(ponto.x<this.xID)&&(ponto.y>this.xIE)&&(ponto.y<this.ySE)){
+
+          
+
+                     return true;
+ 
+                
+
+            }else
+
+                return false;
+
+            
+
+        }
+
+            
+
+        
+
+        public String ToString(double area, double linha){
+ 
+            return "Retangulo: Vertices: IE ("+this.xIE+","+this.yIE+") ID ("+this.xID+","+this.yID+") SE ("+this.xSE+","+this.ySE+") SD ("+this.xSD+","+this.ySD+"), Area: "+area+", Linha: "+linha+"";
+ 
+            
+
+        }       
+
+                
+
+}
+
+        
+
+        
+
+
+
+
+
+
+
+class Triangulo implements Forma{
+
+        double xA,yA,xB,yB,xC,yC;
+ 
+        Triangulo (Ponto2D verticeA, Ponto2D verticeB, Ponto2D verticeC){
+
+            this.xA=verticeA.x;
+
+            this.yA=verticeA.y;
+
+            this.xB=verticeB.x;
+
+            this.yB=verticeB.y;
+ 
+            this.xC=verticeC.x;
+
+            this.yC=verticeC.y;
+
+            
+
+        }
+
+        
+
+        public double calculaArea(){
+		double p;
+		p=(distancia(A-B)+distancia(B-C)+distancia(C-A))/2;
+		
+
+            	return Math.sqrt(p*(p-distancia(a-b)*distancia(b-c)*distancia(c-a));
+ 
+        }
+
+        
+
+        public double comprimentoLinha(){
+
+            return (distancia(A-B)+distancia(B-C)+distancia(C-A));
+
+        }
+
+        
+
+        public boolean contem(Ponto2D ponto){
+ 
+            double verificaA, verificaB, verificaC;
+
+		verificaA=distancia(A-P)*distancia(A-B);
+		verificaB=distancia(B-P)*distancia(B-C);
+		verificaC=distancia(C-P)*distancia(C-A);
+
+		if (verificaA>0 && verificaB>0 && verificaC>0){
+			return true;
+		}else{
+			if(verificaA<0 && verificaB<0 && verificaC<0){
+				return true;
+			}
+			else{
+				if(verificaA==0 || verificaB==0 || verificaC==0)
+					return true;
+				else
+					return false;
+			}
+
+		}
+			
+
+            
+
+        }
+
+            
+
+        
+
+        public String ToString(double area, double linha){
+ 
+            return "Triangulo: Vertices: ("+this.xA+","+this.yA+") ("+this.xB+","+this.yB+") ("+this.xC+","+this.yC+"), Area:"+area+", Linha: "+linha+"";
+ 
+            
+
+        }
+
+        
+
+        
+
+}
+
+
+
+
+
+
+
+
+
+
+public class TrabalhoLpII {
+
+
+
+
+	
+ 
+	public static final int CIRCULO = 1;
+
+	 public static final int RETANGULO = 2;
+
+ 	public static final int TRIANGULO = 3;
+
+	
+
+	 public static void main(String[] args) {
+ 
+
+
+
+		List<Forma> formasGeometricas = new ArrayList<Forma>();
+
+		
+ 
+		Scanner in = new Scanner(System.in);
+
+		 LeitorDeFormas leitor = new LeitorDeFormas(in);
+ 
+		
+
+		while (in.hasNext()) {
+
+						
+ 
+			Forma formaLida = null;
+
+			
+
+			 //Descobre qual forma sera lida em seguida
+ 
+			int tipoForma = in.nextInt();
+
+			
+
+			 switch (tipoForma) {
+ 
+				case CIRCULO:
+
+					 formaLida = leitor.leCirculo();
+
+					 break;
+ 
+				case RETANGULO:
+
+					 formaLida = leitor.leRetangulo();
+
+					 break;
+ 
+				case TRIANGULO:
+
+					 formaLida = leitor.leTriangulo();
+
+					 break;
+ 
+			}
+
+			
+
+                         
+
+			 //le ponto
+ 
+			//Ponto2D ponto = leitor.lePonto();
+
+
+
+
+			 //verifica se forma lida possui ponto
+ 
+                        
+
+			 //imprime resposta
+
+			
+
+			 //Armazena forma lida
+ 
+			//formasGeometricas.add(formaLida);
+
+		 }
+
+		
+ 
+		//imprime informacoes de todas as formas lidas
+
+                
+
+               // System.out.println(formaLida.)
+
+}
+
+ 
+
+
+
+
+
+
+
