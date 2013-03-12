@@ -2,7 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import geometria.Forma;
+import geometria.*;
+import utils.LeitorDeFigura;
 
 public class Main {
 	
@@ -12,9 +13,34 @@ public class Main {
 	
 	public static void main( String args[] ){
 		
-		List<Forma> formasGeometricas = new ArrayList<Forma>();
+		List<Forma> formas = new ArrayList<Forma>();
 		Scanner entrada = new Scanner( System.in );
+		LeitorDeFigura leitor = new LeitorDeFigura( entrada );
 		
+		while( entrada.hasNext() ){
+			int tipoFigura = entrada.nextInt();
+			Forma figura = null;
+			
+			switch( tipoFigura ) {
+				case CIRCULO :
+					figura = leitor.leCirculo(); break;
+				case RETANGULO :
+					break;
+				case TRIANGULO :
+					break;
+			}
+			
+			Ponto2D ponto = leitor.lePonto();
+			System.out.printf("Ponto (%.0f,%.0f) contido no %s: %b\n",ponto.x(),ponto.y(),figura.getNome(),figura.contemPonto( ponto ));
+			
+			formas.add( figura );
+		}
+		
+		System.out.println();
+
+		for( Forma item: formas ){
+			System.out.println(item);
+		}
 		
 	}
 }

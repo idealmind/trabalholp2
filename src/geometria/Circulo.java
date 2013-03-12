@@ -5,30 +5,30 @@ public class Circulo
 	implements Forma {
 		public double pi = Math.PI;
 		private int raio;
-		private int centrox;
-		private int centroy;
+		private Ponto2D centro;
 		
-		
-		public Circulo( int raio, int centrox, int centroy ){
+		public Circulo( int raio, Ponto2D centro ){
 			this.raio = raio;
-			this.centrox = centrox;
-			this.centroy = centroy;
+			this.centro = centro;
 		}
 
 		public double calculaArea(){
-			return this.pi * this.raio * this.raio;
+			return pi * raio * raio;
 		}
 		
 		public double calculaLinha(){
-			return 2 * this.pi * this.raio;
+			return 2 * pi * raio;
 		}
 		
 		public boolean contemPonto( Ponto2D ponto ){
-			double distancia = Math.sqrt( Math.pow( ponto.x - this.centrox, 2 ) + Math.pow( ponto.y - this.centroy, 2 ) );
-			return ( distancia <= this.raio );
+			return ( ponto.distancia( ponto, centro ) <= raio );
+		}
+		
+		public String getNome(){
+			return "circulo";
 		}
 		
 		public String toString(){
-			return "Círculo: Raio "+ this.raio +", centro ("+this.centrox+","+this.centroy+")";
+			return String.format("Circulo: Raio %d, centro (%.0f,%.0f)",raio,centro.x(),centro.y());
 		}
 }
