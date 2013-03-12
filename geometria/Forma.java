@@ -1,3 +1,4 @@
+package geometria;
 
 public interface Forma {
 	double calculaArea();
