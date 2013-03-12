@@ -11,6 +11,10 @@ public class Main {
 	public static final int TRIANGULO = 3;
 	
 	public static void main( String args[] ){
+		
+		List<Forma> formasGeometricas = new ArrayList<Forma>();
 		Scanner entrada = new Scanner( System.in );
+		
+		
 	}
 }
