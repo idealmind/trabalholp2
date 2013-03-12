@@ -1,8 +1,7 @@
-package src;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
 import geometria.Forma;
 
 public class Main {
@@ -12,6 +11,6 @@ public class Main {
 	public static final int TRIANGULO = 3;
 	
 	public static void main( String args[] ){
-		Scanner entrada = new Scanner( System.in ); 
+		Scanner entrada = new Scanner( System.in );
 	}
 }

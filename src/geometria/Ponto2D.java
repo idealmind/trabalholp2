@@ -1,4 +1,4 @@
-package src.geometria;
+package geometria;
 
 public class Ponto2D {
 	float x;

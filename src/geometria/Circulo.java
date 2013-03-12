@@ -1,4 +1,4 @@
-package src.geometria;
+package geometria;
 import java.lang.Math;
 
 public class Circulo 

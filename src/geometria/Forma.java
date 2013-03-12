@@ -1,4 +1,4 @@
-package src.geometria;
+package geometria;
 
 public interface Forma {
 	double calculaArea();
