@@ -1,4 +1,5 @@
 package geometria;
+import java.lang.Math;
 
 public class Triangulo implements Forma {
 	
@@ -23,8 +24,20 @@ public class Triangulo implements Forma {
 		return (this.ladoA + this.ladoB + this.ladoC);	
 	}
 	
-	public boolean contemPonto( Ponto2D ponto ) {
-		return true;
+	public boolean contemPonto(Ponto2D ponto) {
+		
+		boolean A, B, C;
+		
+		A = (this.verticeA.x() - ponto.x()) * (this.verticeB.y() - ponto.y()) - (this.verticeB.x() - ponto.x()) * (this.verticeA.y() - ponto.y()) > 0.0f;
+		B = (this.verticeB.x() - ponto.x()) * (this.verticeC.y() - ponto.y()) - (this.verticeC.x() - ponto.x()) * (this.verticeB.y() - ponto.y()) > 0.0f;
+		
+		if (A != B) {
+			return false;
+		}
+		
+		C = (this.verticeC.x() - ponto.x()) * (this.verticeA.y() - ponto.y()) - (this.verticeA.x() - ponto.x()) * (this.verticeC.y() - ponto.y()) > 0.0f;
+		
+		return (A == C);
 	}
 	
 	public String getNome() {
