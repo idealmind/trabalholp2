@@ -1,4 +1,5 @@
 package geometria;
+import java.lang.Math;
 
 public class Triangulo implements Forma {
 	
@@ -16,13 +17,16 @@ public class Triangulo implements Forma {
 	}
 	
 	public void calculaBaseAltura(){
-		double ca = (verticeC.y()-verticeA.y())/(verticeC.x()-verticeA.x());
-		// Y-Yb=α(X-Xb) = Y = aX -aXb + Yb
-		
+		// Base: AC. Altura em relação ao vértice B
+		// Y-Yb=α(X-Xb) => Y = aX -aXb + Yb => aX + (Yb -aXb ) + y = 0 / ax+by+c=0
+		// => a = ca; b = 1; c = (Yb - caXb )
 		// d=|a(Xa)+b(Ya)+c|/√(a²+b²)
 		
-		// Base: AC. Altura em relação ao vértice B
-
+		double ca = (verticeC.y()-verticeA.y())/(verticeC.x()-verticeA.x());
+		double altura = ca*verticeC.x() + verticeC.y() + verticeA.y() - ca*verticeA.x();
+		altura = altura < 0 ? altura*(-1) : altura;
+		altura = altura / Math.sqrt(Math.pow(ca,2) + 1);
+		this.altura = altura;
 	}
 	
 	public double calculaArea() {		
@@ -33,8 +37,20 @@ public class Triangulo implements Forma {
 		return (this.ladoA + this.ladoB + this.ladoC);	
 	}
 	
-	public boolean contemPonto( Ponto2D ponto ) {
-		return true;
+	public boolean contemPonto(Ponto2D ponto) {
+		
+		boolean A, B, C;
+		
+		A = (this.verticeA.x() - ponto.x()) * (this.verticeB.y() - ponto.y()) - (this.verticeB.x() - ponto.x()) * (this.verticeA.y() - ponto.y()) > 0.0f;
+		B = (this.verticeB.x() - ponto.x()) * (this.verticeC.y() - ponto.y()) - (this.verticeC.x() - ponto.x()) * (this.verticeB.y() - ponto.y()) > 0.0f;
+		
+		if (A != B) {
+			return false;
+		}
+		
+		C = (this.verticeC.x() - ponto.x()) * (this.verticeA.y() - ponto.y()) - (this.verticeA.x() - ponto.x()) * (this.verticeC.y() - ponto.y()) > 0.0f;
+		
+		return (A == C);
 	}
 	
 	public String getNome() {
