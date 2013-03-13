@@ -1,5 +1,10 @@
 package geometria;
 
+/**
+ * Interface das formas Geométricas
+ * @author wellington
+ *
+ */
 public interface Forma {
 	double calculaArea();
 	double calculaLinha();

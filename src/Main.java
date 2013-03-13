@@ -7,9 +7,12 @@ import utils.LeitorDeFigura;
 
 /**
  * 
- * @author wellington
- * Programa que le formas geométricas 2D: círculo, retângulo e triângulo
- * 	e lê um ponto qualquer, dizendo se está delimitado pela forma
+ * @author wellington 
+ * Realiza o controle da leitura dos dados
+ * Contém uma lista que armazena as formas geométricas lidas, 
+ * lê um ponto qualquer, 
+ * verifica se o ponto esta delimitado pela forma, 
+ * e imprime o resultado
  */
 public class Main {
 	
