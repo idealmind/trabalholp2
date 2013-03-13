@@ -1,4 +1,5 @@
 package geometria;
+import java.lang.Float;
 
 public class Retangulo
 	implements Forma {
@@ -31,7 +32,13 @@ public class Retangulo
 	}
 	
 	public boolean contemPonto( Ponto2D ponto ){
-		return ( ponto.x() > vie.x() && ponto.x() < vid && ponto.y() < vsd && ponto.y() > vid );
+		boolean retorno = Float.compare(ponto.x(),vse.x()) < 0;
+		retorno = Float.compare(ponto.y(),vie.y()) > 0;
+		
+		retorno = Float.compare(ponto.x(),vie.x()) > 0;
+		retorno = Float.compare(ponto.x(),vid.x()) < 0;
+
+		return retorno;
 	}
 	
 	public String getNome(){
