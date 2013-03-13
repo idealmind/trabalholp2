@@ -13,7 +13,7 @@ public class Ponto2D {
 		this.x = x;
 		this.y = y;
 	}
-	
+
 	/**
 	 * retorna a coordenada x do ponto
 	 * @return float x
