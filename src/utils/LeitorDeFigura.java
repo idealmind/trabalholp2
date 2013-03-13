@@ -16,6 +16,16 @@ public class LeitorDeFigura {
 		return new Circulo( raio, centro );
 	}
 	
+	public Retangulo leRetangulo() {
+		
+		Ponto2D pontoInfEsq = lePonto();
+		Ponto2D pontoInfDir = lePonto();
+		Ponto2D pontoSupEsq = lePonto();
+		Ponto2D pontoSupDir = lePonto();
+		
+		return new Retangulo(pontoInfEsq, pontoInfDir, pontoSupEsq, pontoSupDir);
+	}
+	
 	public Ponto2D lePonto(){
 		int x = entrada.nextInt();
 		int y = entrada.nextInt();

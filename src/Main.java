@@ -5,6 +5,12 @@ import java.util.Scanner;
 import geometria.*;
 import utils.LeitorDeFigura;
 
+/**
+ * 
+ * @author wellington
+ * Programa que le formas geométricas 2D: círculo, retângulo e triângulo
+ * 	e lê um ponto qualquer, dizendo se está delimitado pela forma
+ */
 public class Main {
 	
 	public static final int CIRCULO = 1;
@@ -25,7 +31,7 @@ public class Main {
 				case CIRCULO :
 					figura = leitor.leCirculo(); break;
 				case RETANGULO :
-					break;
+					figura = leitor.leRetangulo(); break;
 				case TRIANGULO :
 					break;
 			}
@@ -36,7 +42,7 @@ public class Main {
 			formas.add( figura );
 		}
 		
-		System.out.println();
+		System.out.printf("\nTotal de formas lidas: %d\n",formas.size());
 
 		for( Forma item: formas ){
 			System.out.println(item);
