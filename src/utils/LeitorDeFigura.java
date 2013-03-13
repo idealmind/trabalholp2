@@ -42,6 +42,19 @@ public class LeitorDeFigura {
 	}
 	
 	/**
+	 * Lê os pontos de um triangulo
+	 * @return object Triangulo
+	 */
+	public Triangulo leTriangulo() {
+		
+		Ponto2D verticeA = lePonto();
+		Ponto2D verticeB = lePonto();
+		Ponto2D verticeC = lePonto();
+			
+		return new Triangulo(verticeA, verticeB, verticeC);
+	}
+	
+	/**
 	 * Lê um ponto qualquer no plano
 	 * @return object Ponto2D
 	 */

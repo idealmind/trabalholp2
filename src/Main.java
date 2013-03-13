@@ -36,7 +36,7 @@ public class Main {
 				case RETANGULO :
 					figura = leitor.leRetangulo(); break;
 				case TRIANGULO :
-					break;
+					figura = leitor.leTriangulo(); break;
 			}
 			
 			Ponto2D ponto = leitor.lePonto();

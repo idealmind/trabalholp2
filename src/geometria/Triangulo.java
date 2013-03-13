@@ -28,11 +28,11 @@ public class Triangulo implements Forma {
 	}
 	
 	public String getNome() {
-		return "Triangulo";
+		return "triangulo";
 	}
 	
 	public String toString() {
-		return String.format("Triangulo: Vertices: (%.0f,%.0f) (%.0f,%.0f) (%.0f,%.0f) ",this.verticeA.x(), this.verticeA.y(), this.verticeB.x(), this.verticeB.y(), this.verticeC.x(), this.verticeC.y());
+		return String.format("Triangulo: Vertices: (%.0f,%.0f) (%.0f,%.0f) (%.0f,%.0f)",this.verticeA.x(), this.verticeA.y(), this.verticeB.x(), this.verticeB.y(), this.verticeC.x(), this.verticeC.y());
 		
 	}
 	
