@@ -1,13 +1,12 @@
 package geometria;
 
-/**
- * Interface das formas Geométricas
- * @author wellington
- *
- */
 public interface Forma {
-	double calculaArea();
-	double calculaLinha();
-	boolean contemPonto( Ponto2D ponto );
-	String getNome();
+	
+	public double calculaArea();
+	
+	public double calculaLinha();
+	
+	public boolean contemPonto(Ponto2D ponto);
+	
+	public String getNome();
 }

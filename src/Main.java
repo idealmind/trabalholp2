@@ -5,15 +5,6 @@ import java.util.Scanner;
 import geometria.*;
 import utils.LeitorDeFigura;
 
-/**
- * 
- * @author wellington 
- * Realiza o controle da leitura dos dados
- * Contém uma lista que armazena as formas geométricas lidas, 
- * lê um ponto qualquer, 
- * verifica se o ponto esta delimitado pela forma, 
- * e imprime o resultado
- */
 public class Main {
 	
 	public static final int CIRCULO = 1;
@@ -23,7 +14,9 @@ public class Main {
 	public static void main( String args[] ){
 		
 		List<Forma> formas = new ArrayList<Forma>();
+		
 		Scanner entrada = new Scanner( System.in );
+		
 		LeitorDeFigura leitor = new LeitorDeFigura( entrada );
 		
 		while( entrada.hasNext() ){
@@ -49,7 +42,6 @@ public class Main {
 
 		for( Forma item: formas ){
 			System.out.println(item);
-		}
-		
+		}		
 	}
 }
