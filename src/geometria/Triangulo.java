@@ -9,10 +9,20 @@ public class Triangulo implements Forma {
 		this.verticeA = verticeA;
 		this.verticeB = verticeB;
 		this.verticeC = verticeC;
-		this.base = this.verticeA.distancia(this.verticeA, this.verticeC);		
+		this.base = this.verticeA.distancia(this.verticeA, this.verticeC);
 		this.ladoA = this.verticeA.distancia(this.verticeA, this.verticeB);
 		this.ladoB = this.verticeB.distancia(this.verticeB, this.verticeC);
-		this.ladoC = this.verticeC.distancia(this.verticeA, this.verticeC);		
+		this.ladoC = this.verticeC.distancia(this.verticeA, this.verticeC);	
+	}
+	
+	public void calculaBaseAltura(){
+		double ca = (verticeC.y()-verticeA.y())/(verticeC.x()-verticeA.x());
+		// Y-Yb=α(X-Xb) = Y = aX -aXb + Yb
+		
+		// d=|a(Xa)+b(Ya)+c|/√(a²+b²)
+		
+		// Base: AC. Altura em relação ao vértice B
+
 	}
 	
 	public double calculaArea() {		
