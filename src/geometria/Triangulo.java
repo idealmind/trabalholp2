@@ -1,5 +1,4 @@
 package geometria;
-import java.lang.Math;
 
 public class Triangulo implements Forma {
 	
