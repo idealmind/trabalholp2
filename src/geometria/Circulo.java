@@ -30,6 +30,6 @@ public class Circulo  implements Forma {
 		}
 				
 		public String toString() {
-			return String.format("Circulo: Raio %d, centro (%.0f,%.0f)",raio,centro.x(),centro.y());
+			return String.format("Circulo: Raio %d, centro (%.0f,%.0f), Area: %.1f, Linha: %.1f",raio,centro.x(),centro.y(), calculaArea(), calculaLinha());
 		}
 }

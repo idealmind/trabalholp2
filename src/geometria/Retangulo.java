@@ -16,17 +16,12 @@ public class Retangulo implements Forma {
 		this.vid = vid;
 		this.vse = vse;
 		this.vsd = vsd;
-		calculaDimensoes();
-	}
-	
-	private void calculaDimensoes() {
-		
-		this.base = vid.x() - vid.x();
+		this.base = vid.x() - vie.x();
 		this.altura = vsd.y() - vid.y();
 	}
 	
 	public double calculaArea() {
-		return base * altura;
+		return this.base * this.altura;
 	}
 	
 	public double calculaLinha() {
@@ -53,6 +48,6 @@ public class Retangulo implements Forma {
 	
 	
 	public String toString() {
-		return String.format("Retangulo: Vertices: IE (%.0f,%.0f) ID (%.0f,%.0f) SE (%.0f,%.0f) SD (%.0f,%.0f) ",vie.x(),vie.y(),vid.x(),vid.y(),vse.x(),vse.y(),vsd.x(),vsd.y());
+		return String.format("Retangulo: Vertices: IE (%.0f,%.0f) ID (%.0f,%.0f) SE (%.0f,%.0f) SD (%.0f,%.0f), Area: %.1f, Linha: %.1f",vie.x(),vie.y(),vid.x(),vid.y(),vse.x(),vse.y(),vsd.x(),vsd.y(), calculaArea(), calculaLinha() );
 	}
 }
